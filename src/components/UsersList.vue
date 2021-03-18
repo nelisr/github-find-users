@@ -1,16 +1,15 @@
 <template>
   <section class="users">
-    <h3 v-if="isLoading" class="users-isLoading">
-      Carregando ...
-    </h3>
     <div v-if="users && users.length">
       <h2 class="users-title">Usuários GitHub</h2>
       <ul class="row users-list">
         <li v-for="user in users" :key="user.id" class="col-md-6 users-list__item">
           <article class="users-list__card">
-            <figure>
-              <img :src="user.avatar" :alt="user.login" />
-            </figure>
+            <div class="figure-content">
+              <figure>
+                <img :src="user.avatar" :alt="user.login" />
+              </figure>
+            </div>
             <div class="text-content">
               <h2>{{ user.login }}</h2>
               <a
@@ -25,13 +24,10 @@
           </article>
         </li>
       </ul>
-      <Pagination
-        :current="pagination.page"
-        :total="total"
-        :per-page="pagination.per_page"
-        @changePage="changePage($event)"
-      />
     </div>
+    <h3 v-if="isLoading" class="users-isLoading">
+      Carregando ...
+    </h3>
     <h3 v-if="!isLoading && !users.length" class="users-notfound">
       Nenhum usuário encontrado
     </h3>
@@ -39,17 +35,36 @@
 </template>
 
 <script>
-import Pagination from "./Pagination";
-
 export default {
   name: "UsersList",
-  components: {
-    Pagination
-  },
   methods: {
     changePage(page) {
       this.pagination = { ...this.pagination, page };
       this.$store.dispatch("SEARCH_USERS");
+    },
+    onScroll() {
+      window.onscroll = () => {
+        this.isBottomScroll();
+        this.toggleBtnGoToTop();
+      };
+    },
+    isBottomScroll() {
+      let bottomOfWindow =
+        document.documentElement.scrollTop + window.innerHeight ===
+        document.documentElement.offsetHeight;
+      if (bottomOfWindow) {
+        this.pagination = { ...this.pagination, page: this.pagination.page + 1 };
+        this.$store.dispatch("SEARCH_USERS");
+      }
+    },
+    toggleBtnGoToTop() {
+      const scrollToTopButton = document.getElementById("backToTop");
+      let windowY = window.scrollY;
+      if (windowY > 0) {
+        scrollToTopButton.className = "backToTop backToTop--show";
+      } else {
+        scrollToTopButton.className = "backToTop backToTop--hide";
+      }
     }
   },
   computed: {
@@ -78,6 +93,7 @@ export default {
     }
   },
   mounted() {
+    this.onScroll();
     this.$store.dispatch("SEARCH_USERS");
   }
 };

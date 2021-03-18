@@ -27,13 +27,15 @@ export default {
   }),
   methods: {
     onSubmit() {
-      const { search } = this.form;
-      this.pagination = {
-        ...this.pagination,
-        q: search || "a",
-        page: 1
-      };
-      this.$store.dispatch("SEARCH_USERS");
+      this.snackBar = true;
+      // const { search } = this.form;
+      // this.pagination = {
+      //   ...this.pagination,
+      //   q: search || "a",
+      //   page: 1
+      // };
+      // this.$store.dispatch("CLEAR_USERS");
+      // this.$store.dispatch("SEARCH_USERS");
     }
   },
   computed: {
@@ -48,6 +50,14 @@ export default {
     isLoading: {
       get() {
         return this.$store.state.userStore.users.isLoading;
+      }
+    },
+    snackBar: {
+      get() {
+        return this.$store.state.messageStore.snackbar.show;
+      },
+      set(value) {
+        return this.$store.dispatch("SHOW_SNACKBAR", value);
       }
     }
   }

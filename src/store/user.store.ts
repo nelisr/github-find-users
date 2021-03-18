@@ -24,16 +24,18 @@ export const userStore = {
       state.users.pagination = value
     },
     setUsers(state: any, value: User[]) {
-      state.users.content = value
+      state.users.content.push(...value)
     },
     setTotal(state: any, value: number) {
       state.users.total = value
+    },
+    setClearUser(state: any) {
+      state.users.content = []
     }
   },
   actions: {
     async SEARCH_USERS({ commit, dispatch, state }: any) {
       commit('setIsLoading', true)
-      //commit('setUsers', [])
       dispatch("ADD_MESSAGE", {
         type: "",
         message: '',
@@ -64,6 +66,9 @@ export const userStore = {
     },
     SET_TOTAL({commit}: any, value: number) {
       commit('setTotal', value)
+    },
+    CLEAR_USERS({commit}: any) {
+      commit('setClearUser')
     }
   },
 }

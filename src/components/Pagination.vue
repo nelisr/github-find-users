@@ -1,11 +1,11 @@
 <template>
   <nav class="users-pagination">
     <ul class="pagination">
-      <li class="page-item">
+      <!-- <li class="page-item">
         <a class="page-link" href="#" @click.prevent="changePage(firstPage)"
           ><i class="bi bi-chevron-bar-left"></i
         ></a>
-      </li>
+      </li> -->
       <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous" @click.prevent="changePage(prevPage)">
           <span aria-hidden="true">&laquo;</span>
@@ -26,17 +26,21 @@
       <li class="page-item disabled" v-if="hasLast()">
         <a class="page-link" href="#" tabindex="-1">...</a>
       </li>
+      <!-- <li class="page-item" v-if="hasLast()">
+        <a class="page-link" href="#" @click.prevent="changePage(totalPages)"> {{ totalPages }}</a>
+      </li> -->
       <li class="page-item">
         <a class="page-link" href="#" aria-label="Next" @click.prevent="changePage(nextPage)">
           <span aria-hidden="true">&raquo;</span>
           <span class="sr-only">Next</span>
         </a>
       </li>
-      <li class="page-item">
+
+      <!-- <li class="page-item">
         <a class="page-link" href="#" @click.prevent="changePage(lastPage)"
           ><i class="bi bi-chevron-bar-right"></i
         ></a>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </template>

@@ -3,8 +3,7 @@ FROM node:lts as build-stage
 ARG  mode
 WORKDIR /app
 COPY package*.json ./
-COPY yarn.lock ./
-RUN yarn
+RUN yarn install --network-timeout 1000000
 COPY . . 
 RUN echo Argument is $mode
 RUN if [ "$mode" = "homol" ] ; then yarn build-homol ; else yarn build; fi

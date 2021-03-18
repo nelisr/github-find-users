@@ -69,9 +69,17 @@
       padding: 5px;
       background-color: #f7f7f7;
 
+      .figure-content {
+        width: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+      }
+
       .text-content {
-        padding: 10px 20px 10px 20px;
-        width: 300px;
+        padding: 10px 20px 10px 10px;
+        width: 85%;
         text-align: left;
       }
 
@@ -97,6 +105,16 @@
         font-weight: bold;
         color: #000;
         word-break: break-all;
+      }
+
+      @media only screen and (max-width: 991px) {
+        .figure-content {
+          width: 25%;
+        }
+
+        .text-content {
+          width: 75%;
+        }
       }
     }
   }
