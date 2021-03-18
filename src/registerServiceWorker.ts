@@ -4,8 +4,7 @@
 import store from '@/store'
 
 const notifyUserAboutUpdate = (registration: any) => {
-  const event =  {data: {type: 'SKIP_WAITING'}}
-  registration.postMessage(event)
+  registration.postMessage({action: 'skipWaiting'})
   store.dispatch('SHOW_SNACKBAR', true)
 }
 

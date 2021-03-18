@@ -62,7 +62,6 @@ docker-compose up --build -d
 
 ## Todo
 
-- Mostrar mensangem no PWA quando tiver uma nova versão
 - Fazer os tests
 
 ## Versão

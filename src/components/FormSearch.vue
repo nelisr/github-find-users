@@ -27,15 +27,14 @@ export default {
   }),
   methods: {
     onSubmit() {
-      this.snackBar = true;
-      // const { search } = this.form;
-      // this.pagination = {
-      //   ...this.pagination,
-      //   q: search || "a",
-      //   page: 1
-      // };
-      // this.$store.dispatch("CLEAR_USERS");
-      // this.$store.dispatch("SEARCH_USERS");
+      const { search } = this.form;
+      this.pagination = {
+        ...this.pagination,
+        q: search || "a",
+        page: 1
+      };
+      this.$store.dispatch("CLEAR_USERS");
+      this.$store.dispatch("SEARCH_USERS");
     }
   },
   computed: {
