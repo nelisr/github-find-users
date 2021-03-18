@@ -1,18 +1,53 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  <section class="container">
+    <FormSearch />
+    <Message />
+    <UsersList />
+  </section>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+<script>
+import Vue from "vue";
+
+import Message from "@/components/Message";
+import UsersList from "@/components/UsersList";
+import FormSearch from "@/components/FormSearch";
 
 export default Vue.extend({
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld,
+    FormSearch,
+    Message,
+    UsersList
   },
+  methods: {
+    onScroll() {
+      window.onscroll = () => {
+        let bottomOfWindow =
+          document.documentElement.scrollTop + window.innerHeight ===
+          document.documentElement.offsetHeight;
+
+        if (bottomOfWindow) {
+          console.log("Scroll", bottomOfWindow);
+          this.pagination = { ...this.pagination, page: this.pagination.page + 1 };
+          console.log("Pagination", this.pagination.page);
+          this.$store.dispatch("SEARCH_USERS");
+        }
+      };
+    }
+  },
+  computed: {
+    pagination: {
+      get() {
+        return this.$store.state.userStore.users.pagination;
+      },
+      set(value) {
+        return this.$store.dispatch("SET_PAGINATION", value);
+      }
+    }
+  },
+  mounted() {
+    //this.onScroll();
+  }
 });
 </script>

@@ -1,34 +1,65 @@
-# github-users
+## GitGub Users
 
-## Project setup
+Esse é um projeto Vue que consome informações de usuários na API do GitHub.
+
+## Como usar?
+
+1 - Instalar as dependências
+
 ```
-yarn install
+yarn i
 ```
 
-### Compiles and hot-reloads for development
+ou
+
 ```
-yarn serve
+npm i
 ```
 
-### Compiles and minifies for production
+2 - Subir a aplicação em modo de desenvolvimento
+
+```
+yarn dev
+```
+
+ou
+
+```
+npm dev
+```
+
+3 - Build da aplicação em modo de produção
+
 ```
 yarn build
 ```
 
-### Run your unit tests
+ou
+
 ```
-yarn test:unit
+npm build
 ```
 
-### Run your end-to-end tests
+4 - Usando Docker para fazer build
+
+4.1 - Gerando a imagem docker
+
 ```
-yarn test:e2e
+docker build . -t github-find-users
 ```
 
-### Lints and fixes files
+4.2 - Criando um container com base na imagem gerada
+
 ```
-yarn lint
+docker run -d -p 8085:80 --name github-find-users github-find-users
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+4.3 - Caso queira simplicar as etapas anteriores pode usar o docker-compose
+
+```
+docker-compose up --build -d
+```
+
+## Versão
+
+1.0.0
