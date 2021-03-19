@@ -1,4 +1,5 @@
-export const messageStore = {
+export const notification = {
+  namespaced: true,
   state: {
     message: {
       type: '',

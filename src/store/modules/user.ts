@@ -1,7 +1,8 @@
 import UserService from "@/services/user.service";
 import {User} from "@/models/user"
 
-export const userStore = {
+export const user = {
+  namespaced: true,
   state: {
     users: {
       content: [],
@@ -36,12 +37,7 @@ export const userStore = {
   actions: {
     async SEARCH_USERS({ commit, dispatch, state }: any) {
       commit('setIsLoading', true)
-      dispatch("ADD_MESSAGE", {
-        type: "",
-        message: '',
-        show: false
-      })
-
+      dispatch("notification/ADD_MESSAGE", {type: "", message: '', show: false  }, {root: true})
       try {
         const { total, users } = await UserService.search(state.users.pagination)
         commit('setUsers', users)
@@ -49,26 +45,16 @@ export const userStore = {
         commit('setIsLoading', false)
       } catch (error) {
         commit('setIsLoading', false)
-        dispatch("ADD_MESSAGE", {
-          type: "warning",
-          message: error.message,
-          show: true
-        });
+        dispatch("notification/ADD_MESSAGE", {type: "warning", message: error.message, show: true}, {root: true});
         commit('setUsers', [])
         commit('setTotal', 0)
       }
     },
-    SET_IS_LOADING({ commit }: any, value: boolean) {
-      commit('setIsLoading', value)
+    CLEAR_USERS({commit}: any) {
+      commit('setClearUser')
     },
     SET_PAGINATION({commit}: any, value: any) {
       commit('setPagination', value)
     },
-    SET_TOTAL({commit}: any, value: number) {
-      commit('setTotal', value)
-    },
-    CLEAR_USERS({commit}: any) {
-      commit('setClearUser')
-    }
   },
 }

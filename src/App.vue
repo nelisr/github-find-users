@@ -9,9 +9,9 @@
   </main>
 </template>
 <script>
-import Header from "@/components/Header";
-import BtnBackToTop from "@/components/BtnBackToTop";
-import SnackBar from "@/components/Snackbar";
+import Header from "@/components/layout/Header";
+import BtnBackToTop from "@/components/layout/BtnBackToTop";
+import SnackBar from "@/components/layout/Snackbar";
 
 export default {
   components: {

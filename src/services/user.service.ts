@@ -18,7 +18,6 @@ const search = async (params: GitHubQuery): Promise<UsersPage> => {
   }
 
   return userPage;
-
 }
 
 export default {
