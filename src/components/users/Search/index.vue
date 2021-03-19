@@ -2,13 +2,21 @@
   <div>
     <h3>Buscar Usuários GitHub</h3>
     <form @submit.prevent="onSubmit" class="app-form">
-      <input
-        type="search"
-        placeholder="Digite o nome do usuário"
-        class="form-control"
-        v-model="form.search"
-        :disabled="users.isLoading"
-      />
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+        </div>
+        <input
+          type="search"
+          placeholder="Digite o nome do usuário"
+          class="form-control"
+          v-model="form.search"
+          :disabled="users.isLoading"
+        />
+        <button class="btn-clear" type="button" v-if="form.search" @click.prevent="clearFilter">
+          <i class="bi bi-x-circle"></i>
+        </button>
+      </div>
       <button type="submit" class="btn btn-success" :disabled="users.isLoading">
         <i class="bi bi-search"></i> Buscar
       </button>
@@ -33,6 +41,10 @@ export default {
       this.changePage(pagination);
       this.clearUsers();
       this.searchUsers();
+    },
+    clearFilter() {
+      this.form.search = "";
+      this.onSubmit();
     },
     ...mapActions("user", { clearUsers: "CLEAR_USERS" }),
     ...mapActions("user", { searchUsers: "SEARCH_USERS" }),

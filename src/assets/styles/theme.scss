@@ -5,7 +5,7 @@
     margin-bottom: 20px;
     position: fixed;
     width: 100%;
-    z-index: 1;
+    z-index: 999;
     &__cols {
       width: 33.33%;
     }
@@ -33,6 +33,7 @@
   }
   &-container {
     padding-top: 79px;
+    padding-bottom: 100px;
   }
   &-form {
     width: 100%;
@@ -41,6 +42,17 @@
     justify-content: space-between;
     input[type="search"] {
       margin-right: 15px;
+    }
+    .btn-clear {
+      position: absolute;
+      right: 23px;
+      padding: 8px 0px;
+      background: transparent;
+      color: red;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      z-index: 9;
     }
   }
 }
