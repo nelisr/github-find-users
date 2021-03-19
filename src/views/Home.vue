@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <FormSearch />
+    <UsersSearch />
     <Message />
     <UsersList />
   </section>
@@ -9,16 +9,16 @@
 <script>
 import Vue from "vue";
 
-import Message from "@/components/Message";
-import UsersList from "@/components/UsersList";
-import FormSearch from "@/components/FormSearch";
+import UsersSearch from "@/components/users/Search";
+import UsersList from "@/components/users/List";
+import Message from "@/components/layout/Message";
 
 export default Vue.extend({
   name: "Home",
   components: {
-    FormSearch,
-    Message,
-    UsersList
+    UsersSearch,
+    UsersList,
+    Message
   }
 });
 </script>
