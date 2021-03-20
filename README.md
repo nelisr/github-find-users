@@ -25,7 +25,7 @@ yarn dev
 ou
 
 ```
-npm dev
+npm run dev
 ```
 
 **3 - Build da aplicação em modo de produção**
@@ -37,7 +37,7 @@ yarn build
 ou
 
 ```
-npm build
+npm run build
 ```
 
 **4 - Usando Docker para fazer build**
