@@ -2,6 +2,14 @@
 
 Esse é um projeto Vue que consome informações de usuários na API do GitHub.
 
+## Antes de tudo
+
+Adicionar essa secret temporária nos .env VUE_APP_GITHUB_TOKEN para poder fazer mais requisições na API do GitHub
+
+```
+ce4bf4b6db60c3365d8a44e4bb44fca9f769d406
+```
+
 ## Como usar?
 
 **1 - Instalar as dependências**
@@ -16,7 +24,7 @@ ou
 npm i
 ```
 
-**2 - Subir a aplicação em modo de desenvolvimento**
+**3 - Subir a aplicação em modo de desenvolvimento**
 
 ```
 yarn dev
