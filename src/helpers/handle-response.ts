@@ -14,15 +14,16 @@ export const handleErrorResponse = (error: any) => {
   const { response: { status } } = error;
   let message = '';
 
-
   if(status===404) {
     message = 'Recurso ou Url não encontrado'
   } else if (status===403) {
     message = 'Excedido o limite de requsição no GitHub'
   } else if (status===422) {
     message = 'Requisição incorreta'
+  } else if (status===401) {
+    message = 'Sem autorização para acessar o recurso'
   } else if (status===503) {
-    message = 'Serviço indisponível no momento. Favor tentar novamente mais tarde'
+      message = 'Serviço indisponível no momento. Favor tentar novamente mais tarde'
   } else {
     message = 'Ocorreu um erro ao tentar buscar o recurso'
   }

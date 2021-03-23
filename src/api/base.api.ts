@@ -20,9 +20,9 @@ export interface GitHubQuery {
 }
 
 export class BaseAPI<T extends BaseModel> {
-  protected axios: any;
+  protected axios: AxiosInstance;
 
-  protected apiUrl: string
+  protected apiUrl: string;
 
   constructor() {
     this.axios = this.buildAxiosInstance();
